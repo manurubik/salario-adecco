@@ -1,50 +1,41 @@
-# React + TypeScript + Vite
+# Salario Adecco
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una calculadora diseñada para empleados de Adecco que permite calcular el salario correspondiente de manera precisa, basándose en las horas complementarias realizadas y las ausencias.
 
-Currently, two official plugins are available:
+## 🚀 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Cálculo del salario**: Introduce las horas complementarias realizadas este mes y las pendientes del mes anterior junto con las ausencias, y obtén el salario correspondiente.
+- **Conversión de tiempo**: Herramienta integrada para convertir horas y minutos en formato decimal.
+- **Interfaz intuitiva**: Una experiencia de usuario amigable y accesible, optimizada para dispositivos de cualquier tamaño.
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: Para el desarrollo de la interfaz de usuario.
+- **TypeScript**: Para un desarrollo más seguro y tipado.
+- **Tailwind CSS**: Para un diseño responsivo y moderno.
+- **Vite**: Para un entorno de desarrollo rápido y eficiente.
 
-- Configure the top-level `parserOptions` property like this:
+## 📝 Uso de la aplicación
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Introduce las **horas complementarias realizadas este mes**.
+2. Introduce las **horas complementarias pendientes** del mes anterior.
+3. Indica el número de **ausencias**.
+4. Haz clic en el botón **Calcular** para obtener el salario correspondiente.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Conversión de unidades (opcional)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Utiliza la herramienta integrada para convertir horas y minutos a formato decimal si necesitas calcular tiempo total de manera más precisa.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 🎯 Próximas mejoras
+
+- Soporte para más tipos de deducciones y bonificaciones.
+- Exportación de resultados a PDF o Excel.
+- Posibilidad de configurar diferentes tarifas horarias.
+
+## 📩 Contacto
+
+Si tienes preguntas o sugerencias, no dudes en contactarme a través de mi [LinkedIn](https://www.linkedin.com/in/manuel).
+
+---
+
+¡Gracias por usar Salario-Adecco! 😊
