@@ -2,7 +2,12 @@ import { useState } from 'react';
 import InputField from './InputField';
 import { Accordion } from 'react-bootstrap';
 
-const UnitConverter = () => {
+interface UnitConverterProps {
+  activeKey: string | null;
+  setActiveKey: (key: string | null) => void;
+}
+
+const UnitConverter = ({ activeKey, setActiveKey }: UnitConverterProps) => {
   const [hours, setHours] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);
   const [decimalHours, setDecimalHours] = useState<number | null>(null);
@@ -31,7 +36,17 @@ const UnitConverter = () => {
 
   return (
     <div className="bg-gray-100 rounded-lg shadow-md">
-      <Accordion flush>
+      <Accordion
+        activeKey={activeKey}
+        onSelect={(key: string | string[] | null | undefined) => {
+          if (key === undefined || Array.isArray(key)) {
+            setActiveKey(null);
+          } else {
+            setActiveKey(key);
+          }
+        }}
+        flush
+      >
         <Accordion.Item eventKey="0">
           <Accordion.Header className="bg-blue-500 text-white p-1 hover:bg-blue-600 transition">
             Conversión de Unidades

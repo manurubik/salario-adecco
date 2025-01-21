@@ -8,6 +8,7 @@ interface SalaryInputProps {
   absences: number;
   setAbsences: (value: number) => void;
   calculateSalary: () => void;
+  onCalculate: () => void;
 }
 
 const SalaryInput = ({
@@ -18,6 +19,7 @@ const SalaryInput = ({
   absences,
   setAbsences,
   calculateSalary,
+  onCalculate,
 }: SalaryInputProps) => {
   const handleCalculateClick = () => {
     if (isNaN(currentMonthHours) || isNaN(lastMonthHours) || isNaN(absences)) {
@@ -26,21 +28,22 @@ const SalaryInput = ({
     }
 
     calculateSalary();
+    onCalculate();
   };
   return (
     <div className="flex flex-col gap-3 bg-white p-6 max-md:rounded-b-lg shadow-md w-full">
       <InputField
-        label="Horas Complementarias Este Mes"
+        label="1. Horas Complementarias Este Mes"
         value={currentMonthHours}
         onChange={setCurrentMonthHours}
       />
       <InputField
-        label="Horas Complementarias Pendientes (del 24 al 31 del mes anterior)"
+        label="2. Horas Complementarias Pendientes (del 24 al 31 del mes anterior)"
         value={lastMonthHours}
         onChange={setLastMonthHours}
       />
       <InputField
-        label="Ausencias"
+        label="3. Ausencias"
         value={absences}
         onChange={setAbsences}
         step={1}

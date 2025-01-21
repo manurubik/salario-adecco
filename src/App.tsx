@@ -17,6 +17,11 @@ const App = () => {
   const [irpfDeduction, setIrpfDeduction] = useState<number>(0);
   const [ssDeduction, setSsDeduction] = useState<number>(0);
   const [absenceDeduction, setAbsenceDeduction] = useState<number>(0);
+  const [activeKey, setActiveKey] = useState<string | null>(null);
+
+  const handleCalculate = () => {
+    setActiveKey(null);
+  };
 
   const calculateSalary = () => {
     const gross = calculateGrossSalary(lastMonthHours, currentMonthHours);
@@ -49,7 +54,7 @@ const App = () => {
           </p>
         )}
         <div>
-          <UnitConverter />
+          <UnitConverter activeKey={activeKey} setActiveKey={setActiveKey} />
           <div className="flex flex-col md:flex-row">
             {finalSalary !== null && (
               <SalaryBreakdown
@@ -68,6 +73,7 @@ const App = () => {
               absences={absences}
               setAbsences={setAbsences}
               calculateSalary={calculateSalary}
+              onCalculate={handleCalculate}
             />
           </div>
         </div>
