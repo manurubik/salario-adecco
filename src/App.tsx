@@ -5,7 +5,7 @@ import {
   calculateGrossSalary,
   calculateDeductions,
   calculateNetSalary,
-} from './utils'; // Importas las constantes y funciones necesarias
+} from './utils';
 import UnitConverter from './components/UnitConverter';
 
 const App = () => {

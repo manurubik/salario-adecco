@@ -34,7 +34,7 @@ Utiliza la herramienta integrada para convertir horas y minutos a formato decima
 
 ## 📩 Contacto
 
-Si tienes preguntas o sugerencias, no dudes en contactarme a través de mi [LinkedIn](https://www.linkedin.com/in/manuel).
+Si tienes preguntas o sugerencias, no dudes en contactarme a través de mi [LinkedIn](https://www.linkedin.com/in/manuelprietodeanton).
 
 ---
 

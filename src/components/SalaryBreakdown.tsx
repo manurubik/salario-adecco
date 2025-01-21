@@ -48,7 +48,7 @@ const SalaryBreakdown = ({
         </li>
       </ul>
       <div className="mt-4 p-4 bg-green-300 rounded-md">
-        <h2 className="text-lg font-semibold">
+        <h2 className="text-lg font-semibold mb-0">
           Salario Neto: <strong>~{netSalary.toFixed(2)}€</strong>
         </h2>
       </div>
