@@ -6,7 +6,7 @@ import {
   calculateDeductions,
   calculateNetSalary,
 } from './utils';
-import UnitConverter from './components/UnitConverter';
+import AccordionCalcs from './components/AccordionCalcs';
 
 const App = () => {
   const [lastMonthHours, setLastMonthHours] = useState<number>(0);
@@ -47,14 +47,14 @@ const App = () => {
 
       <main className="flex flex-col mx-5 max-w-4xl">
         {finalSalary !== null && (
-          <p className="border border-red-600 bg-red-100 rounded-lg p-2 text-center text-red-600">
+          <p className="border-2 border-red-600 bg-red-100 rounded-lg p-2 text-center text-red-600">
             <strong>Importante:</strong> Es muy probable que el cálculo final
             difiera ligeramente (hasta ~1,5€ de más) de lo percibido en nómina.
             Esto se debe a errores de aproximación al eliminar decimales.
           </p>
         )}
-        <div>
-          <UnitConverter activeKey={activeKey} setActiveKey={setActiveKey} />
+        <div className="flex flex-col gap-3">
+          <AccordionCalcs activeKey={activeKey} setActiveKey={setActiveKey} />
           <div className="flex flex-col md:flex-row">
             {finalSalary !== null && (
               <SalaryBreakdown
@@ -78,7 +78,7 @@ const App = () => {
           </div>
         </div>
       </main>
-      <footer className="w-full bg-orange-200 border border-orange-500 text-center py-3 text-xl">
+      <footer className="w-full bg-orange-200 border-t-2 border-orange-500 text-center py-3 text-xl">
         <strong>Manuel Prieto de Antón &copy; 2025</strong>
       </footer>
     </div>

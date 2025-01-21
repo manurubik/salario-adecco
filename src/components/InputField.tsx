@@ -4,8 +4,6 @@ interface InputFieldProps {
   onChange: (value: number) => void;
   min?: number;
   step?: number;
-  required?: boolean;
-  ariaRequired?: boolean;
 }
 
 const InputField = ({
@@ -14,8 +12,6 @@ const InputField = ({
   onChange,
   min = 0,
   step = 0.01,
-  required = true,
-  ariaRequired = false,
 }: InputFieldProps) => {
   return (
     <div>
@@ -29,9 +25,7 @@ const InputField = ({
         min={min}
         step={step}
         lang="en"
-        required={required}
-        aria-required={ariaRequired ? 'true' : 'false'}
-        className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 form-control"
+        className="w-full p-3 border-2 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 form-control"
       />
     </div>
   );

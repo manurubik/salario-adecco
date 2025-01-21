@@ -16,9 +16,8 @@ const SalaryBreakdown = ({
   netSalary,
 }: SalaryBreakdownProps) => {
   return (
-    <div className="p-6 bg-green-100 md:rounded-bl-lg shadow-md flex flex-col justify-around w-full">
-      <h2 className="text-xl font-semibold text-gray-800">Desglose:</h2>
-      <ul className="space-y-2 mt-4 text-md text-gray-700">
+    <div className="p-6 bg-green-100 shadow-md flex flex-col justify-around w-full">
+      <ul className="space-y-1 text-md text-gray-700 mb-0 pl-3">
         <li className="flex justify-between">
           <strong>Salario Base: </strong>
           <span className="text-right">{baseSalary.toFixed(2)} €</span>
@@ -60,11 +59,9 @@ const SalaryBreakdown = ({
           </span>
         </li>
       </ul>
-      <div className="mt-4 p-4 bg-green-300 rounded-md">
-        <h2 className="text-2xl font-semibold mb-0  flex justify-between">
-          <strong>Salario Neto: </strong>
-          <span className="text-right">~{netSalary.toFixed(2)}€</span>
-        </h2>
+      <div className="mt-4 p-4 bg-green-300 rounded-md mb-0 flex justify-between items-center text-2xl">
+        <h2 className="text-2xl">Salario Neto: </h2>
+        <span className="font-extrabold">~{netSalary.toFixed(2)}€</span>
       </div>
     </div>
   );
