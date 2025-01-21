@@ -40,7 +40,14 @@ const App = () => {
         <h4 className="text-xl">Lefties & CC. Islazul</h4>
       </header>
 
-      <main className="flex flex-col mx-5 max-w-4xl gap-5">
+      <main className="flex flex-col mx-5 max-w-4xl">
+        {finalSalary !== null && (
+          <p className="border border-red-600 bg-red-100 rounded-lg p-2 text-center text-red-600">
+            <strong>Importante:</strong> Es muy probable que el cálculo final
+            difiera ligeramente (hasta ~1,5€ de más) de lo percibido en nómina.
+            Esto se debe a errores de aproximación al eliminar decimales.
+          </p>
+        )}
         <div>
           <UnitConverter />
           <div className="flex flex-col md:flex-row">
@@ -64,13 +71,6 @@ const App = () => {
             />
           </div>
         </div>
-        {finalSalary !== null && (
-          <p className="border border-red-600 bg-red-100 rounded-lg p-2 text-center text-red-600">
-            <strong>Importante:</strong> Es muy probable que el cálculo final
-            difiera ligeramente (hasta ~1,5€ de más) de lo percibido en nómina.
-            Esto se debe a errores de aproximación al eliminar decimales.
-          </p>
-        )}
       </main>
       <footer className="w-full bg-orange-200 border border-orange-500 text-center py-3 text-xl">
         <strong>Manuel Prieto de Antón &copy; 2025</strong>

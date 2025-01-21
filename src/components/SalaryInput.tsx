@@ -28,7 +28,7 @@ const SalaryInput = ({
     calculateSalary();
   };
   return (
-    <div className="flex flex-col gap-5 bg-white p-6 max-md:rounded-b-lg shadow-md w-full">
+    <div className="flex flex-col gap-3 bg-white p-6 max-md:rounded-b-lg shadow-md w-full">
       <InputField
         label="Horas Complementarias Este Mes"
         value={currentMonthHours}
