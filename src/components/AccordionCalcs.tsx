@@ -10,6 +10,8 @@ interface AccordionCalcsProps {
 }
 
 const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
+  const [isConverted, setIsConverted] = useState<boolean>(false);
+
   const [hours, setHours] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);
   const [decimalHours, setDecimalHours] = useState<number | null>(null);
@@ -87,6 +89,7 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
       return;
     }
 
+    setIsConverted(true);
     setErrorMessage('');
     const result = hours + minutes / 60;
     setDecimalHours(parseFloat(result.toFixed(3)));
@@ -110,7 +113,7 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
             Calcular tiempo de trabajo
           </Accordion.Header>
           <Accordion.Body className="flex flex-col bg-gray-100 space-y-2">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center space-y-4">
               <h2 className="text-xl font-semibold text-center mb-0">
                 Introduzca las horas de entrada y salida (formato 24h):
               </h2>
@@ -163,7 +166,6 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
                     (timeDifference - Math.trunc(timeDifference)) *
                     60
                   ).toFixed(0)} minutos = ${timeDifference} horas`}
-                  note=""
                   font="bold"
                   text="lg"
                 />
@@ -176,7 +178,7 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
             Convertir a horas
           </Accordion.Header>
           <Accordion.Body className="flex flex-col bg-gray-100 space-y-2">
-            <div className="flex flex-col items-center space-y-2">
+            <div className="flex flex-col items-center space-y-4">
               <h2 className="text-xl font-semibold text-center mb-0">
                 Introduzca el tiempo a calcular:
               </h2>
@@ -194,11 +196,14 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
                   step={5}
                 />
               </div>
-              <Notification
-                color="yellow"
-                message='Si cambia los valores vuelva a hacer click
-              en el botón "Convertir" para actualizar el resultado'
-              />
+              {isConverted && (
+                <Notification
+                  color="yellow"
+                  message='Si cambia los valores vuelva a hacer click
+                en el botón "Convertir" para actualizar el resultado'
+                  note="Nota"
+                />
+              )}
               <Button onClick={convertToDecimal} label="Convertir" />
             </div>
             <div className="flex justify-center">
@@ -216,7 +221,6 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
                   color="purple"
                   message={`
                   ${hours} horas y ${minutes} minutos = ${decimalHours} horas`}
-                  note=""
                   font="bold"
                   text="lg"
                 />

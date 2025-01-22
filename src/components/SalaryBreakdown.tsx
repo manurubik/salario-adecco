@@ -1,5 +1,5 @@
 import { baseSalary, irpf, ss } from '../utils';
-
+import Notification from './Notification';
 interface SalaryBreakdownProps {
   grossSalary: number;
   irpfDeduction: number;
@@ -16,8 +16,9 @@ const SalaryBreakdown = ({
   netSalary,
 }: SalaryBreakdownProps) => {
   return (
-    <div className="p-6 bg-white md:border-r-4 max-md:border-b-4 border-black shadow-md flex flex-col justify-around w-full">
-      <ul className="space-y-1 text-md text-gray-700 mb-0 pl-3">
+    <div className="flex flex-col justify-between bg-white p-6 shadow-md w-full md:border-r-4 max-md:border-b-4 border-black">
+      <h2 className="mb-0 pl-2 underline">Desglose: </h2>
+      <ul className="space-y-1 text-md text-gray-700 mt-3 mb-0 pl-2">
         <li className="flex justify-between">
           <strong>Salario Base: </strong>
           <span className="text-right">{baseSalary.toFixed(2)} €</span>
@@ -59,10 +60,13 @@ const SalaryBreakdown = ({
           </span>
         </li>
       </ul>
-      <div className="mt-4 p-4 border-2 border-green-600 bg-green-300 rounded-md mb-0 flex justify-between items-center text-2xl">
-        <h2 className="text-2xl">Salario Neto: </h2>
-        <span className="font-extrabold">~{netSalary.toFixed(2)}€</span>
-      </div>
+      <Notification
+        color="green"
+        message={`~${netSalary.toFixed(2)}€`}
+        note="Salario neto"
+        font="extrabold"
+        text="2xl"
+      />
     </div>
   );
 };

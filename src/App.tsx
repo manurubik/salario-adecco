@@ -78,7 +78,7 @@ const App = () => {
           />
         </div>
       </main>
-      <aside className="py-2">
+      <aside className="py-2 w-full">
         <strong className="mb-0 ml-3">* Web NO Oficial</strong>
       </aside>
       <footer className="w-full bg-orange-200 border-t-2 border-orange-500 text-center py-3 text-xl">

@@ -54,6 +54,7 @@ const SalaryInput = ({
         <Notification
           color="yellow"
           message='Use "," para introducir decimales'
+          note="Nota"
         />
       }
       <Button onClick={handleCalculateClick} label="Calcular salario" />
