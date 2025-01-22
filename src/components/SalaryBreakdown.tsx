@@ -23,15 +23,15 @@ const SalaryBreakdown = ({
           <span className="text-right">{baseSalary.toFixed(2)} €</span>
         </li>
         <li className="flex justify-between">
-          <strong>Horas Complementarias: </strong>
+          <strong>Horas Complementarias:</strong>
           <span className="text-right">
-            {(grossSalary - baseSalary).toFixed(2)}€
+            {(grossSalary - baseSalary).toFixed(2)} €
           </span>
         </li>
         <li className="flex justify-between">
           <strong>Salario bruto: </strong>
           <span className="text-right font-semibold text-xl">
-            {grossSalary.toFixed(2)} €
+            {grossSalary.toFixed(2)}€
           </span>
         </li>
         <br />
@@ -42,7 +42,7 @@ const SalaryBreakdown = ({
         <li className="flex justify-between">
           <strong>Base para deducciones:</strong>
           <span className="text-right font-semibold text-lg">
-            {(grossSalary - absenceDeduction).toFixed(2)} €
+            {(grossSalary - absenceDeduction).toFixed(2)}€
           </span>
         </li>
         <br />

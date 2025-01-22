@@ -1,4 +1,6 @@
+import Button from './Button';
 import InputField from './InputField';
+import Notification from './Notification';
 
 interface SalaryInputProps {
   lastMonthHours: number;
@@ -48,13 +50,13 @@ const SalaryInput = ({
         onChange={setAbsences}
         step={1}
       />
-      <button
-        onClick={handleCalculateClick}
-        aria-label="Calcular"
-        className="w-full bg-blue-500 text-white py-2 mt-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        Calcular
-      </button>
+      {
+        <Notification
+          color="yellow"
+          message='Use "," para introducir decimales'
+        />
+      }
+      <Button onClick={handleCalculateClick} label="Calcular salario" />
     </div>
   );
 };

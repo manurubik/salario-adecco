@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import InputField from './InputField';
 import { Accordion } from 'react-bootstrap';
+import InputField from './InputField';
+import Notification from './Notification';
+import Button from './Button';
 
 interface AccordionCalcsProps {
   activeKey: string | null;
@@ -20,6 +22,52 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
   const [timeDifference, setTimeDifference] = useState<number | null>(null);
   const [differenceErrorMessage, setDifferenceErrorMessage] =
     useState<string>('');
+
+  const calculateTimeDifference = () => {
+    if (
+      isNaN(startHours) ||
+      isNaN(startMinutes) ||
+      isNaN(endHours) ||
+      isNaN(endMinutes)
+    ) {
+      setDifferenceErrorMessage(
+        'Los campos no pueden quedar vacíos (usa 0 si no aplica)'
+      );
+      return;
+    }
+
+    if (startHours < 0 || startMinutes < 0 || endHours < 0 || endMinutes < 0) {
+      setDifferenceErrorMessage('Por favor, ingrese valores positivos.');
+      return;
+    }
+
+    if (startMinutes >= 60 || endMinutes >= 60) {
+      setDifferenceErrorMessage('Los minutos deben estar entre 0 y 59.');
+      return;
+    }
+
+    if (startHours >= 24 || endHours >= 24) {
+      setDifferenceErrorMessage('Las horas deben estar entre 0 y 23.');
+      return;
+    }
+
+    setDifferenceErrorMessage('');
+
+    // Convierte las horas de entrada y salida a minutos
+    const startTotalMinutes = startHours * 60 + startMinutes;
+    const endTotalMinutes = endHours * 60 + endMinutes;
+
+    let differenceInMinutes: number;
+
+    if (endTotalMinutes < startTotalMinutes) {
+      differenceInMinutes = 1440 - startTotalMinutes + endTotalMinutes; // 1440 minutos en un día
+    } else {
+      differenceInMinutes = endTotalMinutes - startTotalMinutes;
+    }
+
+    const differenceInHours = differenceInMinutes / 60;
+    setTimeDifference(parseFloat(differenceInHours.toFixed(3)));
+  };
 
   const convertToDecimal = () => {
     if (isNaN(hours) || isNaN(minutes)) {
@@ -44,47 +92,8 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
     setDecimalHours(parseFloat(result.toFixed(3)));
   };
 
-  const calculateTimeDifference = () => {
-    if (
-      isNaN(startHours) ||
-      isNaN(startMinutes) ||
-      isNaN(endHours) ||
-      isNaN(endMinutes)
-    ) {
-      setDifferenceErrorMessage('Todos los campos deben estar completos.');
-      return;
-    }
-
-    if (startHours < 0 || startMinutes < 0 || endHours < 0 || endMinutes < 0) {
-      setDifferenceErrorMessage('Por favor, ingrese valores positivos.');
-      return;
-    }
-
-    if (startMinutes >= 60 || endMinutes >= 60) {
-      setDifferenceErrorMessage('Los minutos deben estar entre 0 y 59.');
-      return;
-    }
-
-    setDifferenceErrorMessage('');
-
-    // Convierte las horas de entrada y salida a minutos
-    const startTotalMinutes = startHours * 60 + startMinutes;
-    const endTotalMinutes = endHours * 60 + endMinutes;
-
-    let differenceInMinutes: number;
-
-    if (endTotalMinutes < startTotalMinutes) {
-      differenceInMinutes = 1440 - startTotalMinutes + endTotalMinutes; // 1440 minutos en un día
-    } else {
-      differenceInMinutes = endTotalMinutes - startTotalMinutes;
-    }
-
-    const differenceInHours = differenceInMinutes / 60;
-    setTimeDifference(parseFloat(differenceInHours.toFixed(3)));
-  };
-
   return (
-    <div className="bg-gray-100 rounded-lg shadow-md">
+    <div className="bg-gray-100 shadow-md">
       <Accordion
         activeKey={activeKey}
         onSelect={(key: string | string[] | null | undefined) => {
@@ -100,70 +109,64 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
           <Accordion.Header className="bg-blue-500 text-white p-1 hover:bg-blue-600 transition">
             Calcular tiempo de trabajo
           </Accordion.Header>
-          <Accordion.Body className="p-6 bg-gray-100">
-            <h2 className="text-xl font-semibold text-center mb-2">
-              Introduzca las horas de entrada y salida:
-            </h2>
-            <div className="flex flex-col gap-3 items-center">
-              <div className="flex gap-4">
-                <div className="flex items-center gap-2">
-                  <InputField
-                    label="Hora de entrada (Horas):"
-                    value={startHours}
-                    onChange={setStartHours}
-                    step={1}
-                  />
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <InputField
-                    label="Minutos de entrada:"
-                    value={startMinutes}
-                    onChange={setStartMinutes}
-                    step={1}
-                  />
-                </div>
+          <Accordion.Body className="flex flex-col bg-gray-100 space-y-2">
+            <div className="flex flex-col items-center">
+              <h2 className="text-xl font-semibold text-center mb-0">
+                Introduzca las horas de entrada y salida (formato 24h):
+              </h2>
+              <div className="grid grid-cols-2 gap-x-10">
+                <InputField
+                  label="Hora de entrada (Horas):"
+                  value={startHours}
+                  onChange={setStartHours}
+                  step={1}
+                  max={23}
+                />
+                <InputField
+                  label="Minutos de entrada:"
+                  value={startMinutes}
+                  onChange={setStartMinutes}
+                  step={5}
+                />
+                <InputField
+                  label="Hora de salida (Horas):"
+                  value={endHours}
+                  onChange={setEndHours}
+                  step={1}
+                  max={23}
+                />
+                <InputField
+                  label="Minutos de salida:"
+                  value={endMinutes}
+                  onChange={setEndMinutes}
+                  step={5}
+                />
               </div>
-
-              <div className="flex gap-4 mt-4">
-                <div className="flex items-center gap-2">
-                  <InputField
-                    label="Hora de salida (Horas):"
-                    value={endHours}
-                    onChange={setEndHours}
-                    step={1}
-                  />
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <InputField
-                    label="Minutos de salida:"
-                    value={endMinutes}
-                    onChange={setEndMinutes}
-                    step={1}
-                  />
-                </div>
-              </div>
-
-              <button
-                onClick={calculateTimeDifference}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-              >
-                Calcular
-              </button>
-
+              <Button onClick={calculateTimeDifference} label="Calcular" />
+            </div>
+            <div>
               {differenceErrorMessage && (
-                <div className="bg-red-100 p-2 rounded-md text-center text-red-700">
-                  <p className="font-semibold mb-0">{differenceErrorMessage}</p>
-                </div>
+                <Notification
+                  color="red"
+                  message={differenceErrorMessage}
+                  note="Error"
+                  font="semibold"
+                />
               )}
 
               {timeDifference !== null && !differenceErrorMessage && (
-                <div className="bg-purple-100 border-2 border-purple-600 p-2 rounded-md text-center">
-                  <p className="text-lg font-semibold mb-0">
-                    Horas trabajadas: {timeDifference} horas
-                  </p>
-                </div>
+                <Notification
+                  color="purple"
+                  message={`Horas trabajadas: ${Math.trunc(
+                    timeDifference
+                  )} horas y ${(
+                    (timeDifference - Math.trunc(timeDifference)) *
+                    60
+                  ).toFixed(0)} minutos = ${timeDifference} horas`}
+                  note=""
+                  font="bold"
+                  text="lg"
+                />
               )}
             </div>
           </Accordion.Body>
@@ -172,53 +175,51 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
           <Accordion.Header className="bg-blue-500 text-white p-1 hover:bg-blue-600 transition">
             Convertir a horas
           </Accordion.Header>
-          <Accordion.Body className="p-6 bg-gray-100">
-            <h2 className="text-xl font-semibold text-center mb-2">
-              Introduzca el tiempo a calcular:
-            </h2>
-            <div className="flex flex-col gap-3 items-center">
-              <div className="flex gap-4">
-                <div className="flex items-center gap-2">
-                  <InputField
-                    label="Horas:"
-                    value={hours}
-                    onChange={setHours}
-                    step={1}
-                  />
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <InputField
-                    label="Minutos:"
-                    value={minutes}
-                    onChange={setMinutes}
-                    step={1}
-                  />
-                </div>
+          <Accordion.Body className="flex flex-col bg-gray-100 space-y-2">
+            <div className="flex flex-col items-center space-y-2">
+              <h2 className="text-xl font-semibold text-center mb-0">
+                Introduzca el tiempo a calcular:
+              </h2>
+              <div className="flex space-x-10 mt-0">
+                <InputField
+                  label="Horas:"
+                  value={hours}
+                  onChange={setHours}
+                  step={1}
+                />
+                <InputField
+                  label="Minutos:"
+                  value={minutes}
+                  onChange={setMinutes}
+                  step={5}
+                />
               </div>
-              <p className="border-1 border-yellow-600 bg-yellow-100 rounded-lg p-2 text-center text-yellow-600">
-                <strong>Nota:</strong> Si cambia los valores vuelva a hacer
-                click en el botón "Convertir" para actualizar el resultado
-              </p>
-              <button
-                onClick={convertToDecimal}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-              >
-                Convertir
-              </button>
-
+              <Notification
+                color="yellow"
+                message='Si cambia los valores vuelva a hacer click
+              en el botón "Convertir" para actualizar el resultado'
+              />
+              <Button onClick={convertToDecimal} label="Convertir" />
+            </div>
+            <div className="flex justify-center">
               {errorMessage && (
-                <div className="bg-red-100 p-2 rounded-md text-center text-red-700">
-                  <p className="font-semibold mb-0">{errorMessage}</p>
-                </div>
+                <Notification
+                  color="red"
+                  message={errorMessage}
+                  note="Error"
+                  font="semibold"
+                />
               )}
 
               {decimalHours !== null && !errorMessage && (
-                <div className="bg-purple-100 border-2 border-purple-600 p-2 rounded-md text-center">
-                  <p className="text-lg font-semibold mb-0">
-                    {hours} horas y {minutes} minutos = {decimalHours} horas
-                  </p>
-                </div>
+                <Notification
+                  color="purple"
+                  message={`
+                  ${hours} horas y ${minutes} minutos = ${decimalHours} horas`}
+                  note=""
+                  font="bold"
+                  text="lg"
+                />
               )}
             </div>
           </Accordion.Body>
