@@ -55,7 +55,6 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
 
     setDifferenceErrorMessage('');
 
-    // Convierte las horas de entrada y salida a minutos
     const startTotalMinutes = startHours * 60 + startMinutes;
     const endTotalMinutes = endHours * 60 + endMinutes;
 

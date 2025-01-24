@@ -16,7 +16,7 @@ const SalaryBreakdown = ({
   netSalary,
 }: SalaryBreakdownProps) => {
   return (
-    <div className="flex flex-col justify-between bg-white p-6 shadow-md w-full md:border-r-4 max-md:border-b-4 border-black">
+    <div className="flex flex-col justify-between bg-white p-6 shadow-md w-full md:border-l-4 max-md:border-t-4 border-black">
       <h2 className="mb-0 pl-2 underline">Desglose: </h2>
       <ul className="space-y-1 text-md text-gray-700 mt-3 mb-0 pl-2">
         <li className="flex justify-between">
@@ -60,6 +60,7 @@ const SalaryBreakdown = ({
           </span>
         </li>
       </ul>
+      <br />
       <Notification
         color="green"
         message={`~${netSalary.toFixed(2)}€`}

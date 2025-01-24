@@ -48,24 +48,7 @@ const App = () => {
 
       <main className="flex flex-col w-5/6 lg:w-3/4 xl:w-2/3 gap-3">
         <AccordionCalcs activeKey={activeKey} setActiveKey={setActiveKey} />
-        {finalSalary !== null && (
-          <Notification
-            color="red"
-            message="Es muy probable que el cálculo final difiera ligeramente (hasta ~1,5€ de más) de lo percibido en nómina. Esto se debe a errores de aproximación al eliminar decimales."
-            note="Importante"
-            font="semibold"
-          />
-        )}
         <div className="flex flex-col md:flex-row">
-          {finalSalary !== null && (
-            <SalaryBreakdown
-              grossSalary={grossSalary}
-              irpfDeduction={irpfDeduction}
-              ssDeduction={ssDeduction}
-              absenceDeduction={absenceDeduction}
-              netSalary={finalSalary}
-            />
-          )}
           <SalaryInput
             lastMonthHours={lastMonthHours}
             setLastMonthHours={setLastMonthHours}
@@ -76,7 +59,24 @@ const App = () => {
             calculateSalary={calculateSalary}
             onCalculate={handleCalculate}
           />
+          {finalSalary !== null && (
+            <SalaryBreakdown
+              grossSalary={grossSalary}
+              irpfDeduction={irpfDeduction}
+              ssDeduction={ssDeduction}
+              absenceDeduction={absenceDeduction}
+              netSalary={finalSalary}
+            />
+          )}
         </div>
+        {finalSalary !== null && (
+          <Notification
+            color="red"
+            message="Es muy probable que el cálculo final difiera ligeramente (hasta ~1,5€ de más) de lo percibido en nómina. Esto se debe a errores de aproximación al eliminar decimales."
+            note="Importante"
+            font="semibold"
+          />
+        )}
       </main>
       <aside className="py-2 w-full">
         <strong className="mb-0 ml-3">* Web NO Oficial</strong>
