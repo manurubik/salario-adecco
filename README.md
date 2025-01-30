@@ -1,12 +1,21 @@
-# Salario Adecco
+# Calculadora de Salario Adecco (NO Oficial)
 
-Una calculadora diseñada para empleados de Adecco que permite calcular el salario correspondiente de manera precisa, basándose en las horas complementarias realizadas y las ausencias.
+Esta es una herramienta web que permite calcular el salario neto de un trabajador de Adecco en posiciones como:
+
+- Moz@ de almacén
+- Manipulador/a de carga
+- Reponedor/a
+
+Diseñada específicamente para trabajadores del Lefties en C.C. Islazul.
 
 ## 🚀 Características
 
-- **Cálculo del salario**: Introduce las horas complementarias realizadas este mes y las pendientes del mes anterior junto con las ausencias, y obtén el salario correspondiente.
+- **Cálculo de salario bruto y neto** basado en las horas trabajadas y ausencias.
+- **Desglose de deducciones** como IRPF y Seguridad Social.
 - **Conversión de tiempo**: Herramienta integrada para convertir horas y minutos en formato decimal.
+- **Cálculo de horas**: Opción para calcular automáticamente las horas trabajadas en base al tiempo registrado.
 - **Interfaz intuitiva**: Una experiencia de usuario amigable y accesible, optimizada para dispositivos de cualquier tamaño.
+- **Avisos y notificaciones** para guiar al usuario en el uso correcto de la herramienta.
 
 ## 🛠️ Tecnologías utilizadas
 
@@ -14,17 +23,17 @@ Una calculadora diseñada para empleados de Adecco que permite calcular el salar
 - **TypeScript**: Para un desarrollo más seguro y tipado.
 - **Tailwind CSS**: Para un diseño responsivo y moderno.
 - **Vite**: Para un entorno de desarrollo rápido y eficiente.
+- **React Icons**: Para usar íconos visualmente atractivos en la interfaz.
+- **Bootstrap**: Para implementar el Accordion y otros componentes interactivos de manera rápida.
 
 ## 📝 Uso de la aplicación
 
-1. Introduce las **horas complementarias realizadas este mes**.
-2. Introduce las **horas complementarias pendientes** del mes anterior.
-3. Indica el número de **ausencias**.
-4. Haz clic en el botón **Calcular** para obtener el salario correspondiente.
+1. Introduce las horas trabajadas el mes anterior y el mes actual.
+2. Especifica las ausencias si las hay.
+3. Pulsa el botón "Convertir" para calcular el salario.
+4. Consulta el desglose de deducciones y el salario final estimado.
 
-### Conversión de unidades (opcional)
-
-Utiliza la herramienta integrada para convertir horas y minutos a formato decimal si necesitas calcular tiempo total de manera más precisa.
+⚠️ **Importante:** Los cálculos pueden presentar una pequeña diferencia (~1,5€) con la nómina real debido a aproximaciones en la eliminación de decimales.
 
 ## 🎯 Próximas mejoras
 
@@ -36,6 +45,10 @@ Utiliza la herramienta integrada para convertir horas y minutos a formato decima
 
 Si tienes preguntas o sugerencias, no dudes en contactarme a través de mi [LinkedIn](https://www.linkedin.com/in/manuelprietodeanton).
 
+**Manuel Prieto de Antón &copy; 2025**
+
 ---
 
 ¡Gracias por usar Salario-Adecco! 😊
+
+📌 _Este proyecto es una herramienta personal y NO está afiliada oficialmente con Adecco._
