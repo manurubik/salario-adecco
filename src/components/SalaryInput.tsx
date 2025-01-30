@@ -57,7 +57,11 @@ const SalaryInput = ({
           note="Nota"
         />
       }
-      <Button onClick={handleCalculateClick} label="Calcular salario" />
+      <Button
+        color="green"
+        onClick={handleCalculateClick}
+        label="Calcular salario"
+      />
     </div>
   );
 };

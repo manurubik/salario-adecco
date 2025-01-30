@@ -2,9 +2,10 @@
 
 Esta es una herramienta web que permite calcular el salario neto de un trabajador de Adecco en posiciones como:
 
-- Moz@ de almacén
+- Moz@ de descarga
 - Manipulador/a de carga
-- Reponedor/a
+- Clasificado textil
+- Reponedor/a en tienda
 
 Diseñada específicamente para trabajadores del Lefties en C.C. Islazul.
 
@@ -49,6 +50,6 @@ Si tienes preguntas o sugerencias, no dudes en contactarme a través de mi [Link
 
 ---
 
-¡Gracias por usar Salario-Adecco! 😊
+¡Gracias por usar Calculadora de Salario Adecco\*! 😊
 
 📌 _Este proyecto es una herramienta personal y NO está afiliada oficialmente con Adecco._

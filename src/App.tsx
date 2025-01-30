@@ -41,9 +41,10 @@ const App = () => {
       <header className="font-bold mt-6 p-4 text-center text-gray-800 space-y-4">
         <h1 className="text-6xl">Calculadora de Salario Adecco*</h1>
         <h3 className="text-2xl">
-          Moz@ de almacén | Manipulador/a de carga | Reponedor/a
+          Moz@ de descarga | Manipulación y clasificado textil | Reposición en
+          tienda |
         </h3>
-        <h4 className="text-xl">Lefties & CC. Islazul</h4>
+        <h4 className="text-xl">Lefties & C.C. Islazul</h4>
       </header>
 
       <main className="flex flex-col w-5/6 lg:w-3/4 xl:w-2/3 gap-3">
