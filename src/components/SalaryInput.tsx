@@ -35,12 +35,12 @@ const SalaryInput = ({
   return (
     <div className="flex flex-col gap-3 bg-white p-6 shadow-md w-full">
       <InputField
-        label="1. Horas Complementarias Este Mes"
+        label="1. Horas Complementarias (del Mes a Cobrar, hasta el 24)"
         value={currentMonthHours}
         onChange={setCurrentMonthHours}
       />
       <InputField
-        label="2. Horas Complementarias Pendientes (del 24 al 31 del mes anterior)"
+        label="2. Horas Complementarias Pendientes (del 24 al 30-31 del mes anterior)"
         value={lastMonthHours}
         onChange={setLastMonthHours}
       />

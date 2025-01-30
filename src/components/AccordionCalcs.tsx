@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Accordion } from 'react-bootstrap';
+import { FaCopy } from 'react-icons/fa6';
 import InputField from './InputField';
 import Notification from './Notification';
 import Button from './Button';
@@ -10,12 +11,11 @@ interface AccordionCalcsProps {
 }
 
 const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
-  const [isConverted, setIsConverted] = useState<boolean>(false);
-
   const [hours, setHours] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);
   const [decimalHours, setDecimalHours] = useState<number | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [copyMessage, setCopyMessage] = useState<string | null>(null);
 
   const [startHours, setStartHours] = useState<number>(0);
   const [startMinutes, setStartMinutes] = useState<number>(0);
@@ -25,6 +25,11 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
   const [differenceErrorMessage, setDifferenceErrorMessage] =
     useState<string>('');
 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopyMessage('Copiado');
+    setTimeout(() => setCopyMessage(null), 1000);
+  };
   const calculateTimeDifference = () => {
     if (
       isNaN(startHours) ||
@@ -61,7 +66,7 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
     let differenceInMinutes: number;
 
     if (endTotalMinutes < startTotalMinutes) {
-      differenceInMinutes = 1440 - startTotalMinutes + endTotalMinutes; // 1440 minutos en un día
+      differenceInMinutes = 1440 - startTotalMinutes + endTotalMinutes;
     } else {
       differenceInMinutes = endTotalMinutes - startTotalMinutes;
     }
@@ -88,7 +93,6 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
       return;
     }
 
-    setIsConverted(true);
     setErrorMessage('');
     const result = hours + minutes / 60;
     setDecimalHours(parseFloat(result.toFixed(3)));
@@ -157,17 +161,32 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
               )}
 
               {timeDifference !== null && !differenceErrorMessage && (
-                <Notification
-                  color="purple"
-                  message={`Horas trabajadas: ${Math.trunc(
-                    timeDifference
-                  )} horas y ${(
-                    (timeDifference - Math.trunc(timeDifference)) *
-                    60
-                  ).toFixed(0)} minutos = ${timeDifference} horas`}
-                  font="bold"
-                  text="lg"
-                />
+                <div className="flex max-md:flex-col items-center justify-center gap-3">
+                  <Notification
+                    color="purple"
+                    message={`Horas trabajadas: ${Math.trunc(
+                      timeDifference
+                    )}h y ${(
+                      (timeDifference - Math.trunc(timeDifference)) *
+                      60
+                    ).toFixed(0)}' = ${timeDifference} horas`}
+                    font="bold"
+                    text="lg"
+                  />
+                  <Button
+                    color="purple"
+                    onClick={() => copyToClipboard(timeDifference.toString())}
+                    label={<FaCopy />}
+                  />
+                  {copyMessage && (
+                    <Notification
+                      color="blue"
+                      message={copyMessage}
+                      font="bold"
+                      text="sm"
+                    />
+                  )}
+                </div>
               )}
             </div>
           </Accordion.Body>
@@ -195,17 +214,9 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
                   step={5}
                 />
               </div>
-              {isConverted && (
-                <Notification
-                  color="yellow"
-                  message='Si cambia los valores vuelva a hacer click
-                en el botón "Convertir" para actualizar el resultado'
-                  note="Nota"
-                />
-              )}
               <Button onClick={convertToDecimal} label="Convertir" />
             </div>
-            <div className="flex justify-center">
+            <div>
               {errorMessage && (
                 <Notification
                   color="red"
@@ -216,13 +227,27 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
               )}
 
               {decimalHours !== null && !errorMessage && (
-                <Notification
-                  color="purple"
-                  message={`
-                  ${hours} horas y ${minutes} minutos = ${decimalHours} horas`}
-                  font="bold"
-                  text="lg"
-                />
+                <div className="flex max-md:flex-col items-center justify-center gap-3">
+                  <Notification
+                    color="purple"
+                    message={`
+                    ${hours}h y ${minutes}' = ${decimalHours} horas`}
+                    font="bold"
+                    text="lg"
+                  />
+                  <Button
+                    color="purple"
+                    onClick={() => copyToClipboard(decimalHours.toString())}
+                    label={<FaCopy />}
+                  />
+                  {copyMessage && (
+                    <Notification
+                      color="blue"
+                      message={copyMessage}
+                      font="bold"
+                    />
+                  )}
+                </div>
               )}
             </div>
           </Accordion.Body>

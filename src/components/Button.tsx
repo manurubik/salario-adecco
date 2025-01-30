@@ -1,13 +1,18 @@
+import { ReactNode } from 'react';
+
 interface ButtonProps {
   onClick: () => void;
-  label: string;
+  color?: 'red' | 'blue' | 'green' | 'yellow' | 'purple';
+  label: ReactNode;
 }
 
-const Button = ({ onClick, label }: ButtonProps) => {
+const Button = ({ onClick, color = 'blue', label }: ButtonProps) => {
+  const colorClasses = `border-${color}-700 bg-${color}-500 text-${color}-700 hover:bg-${color}-700`;
+
   return (
     <button
       onClick={onClick}
-      className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+      className={`border-1 ${colorClasses} text-white p-2 rounded-md`}
     >
       {label}
     </button>

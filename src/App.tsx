@@ -47,6 +47,11 @@ const App = () => {
       </header>
 
       <main className="flex flex-col w-5/6 lg:w-3/4 xl:w-2/3 gap-3">
+        <Notification
+          color="orange"
+          message='Si cambia los valores vuelva a pulsar el botón "Convertir" para actualizar el resultado'
+          note="Importante"
+        />
         <AccordionCalcs activeKey={activeKey} setActiveKey={setActiveKey} />
         <div className="flex flex-col md:flex-row">
           <SalaryInput
@@ -77,10 +82,10 @@ const App = () => {
             font="semibold"
           />
         )}
+        <aside className="py-3 w-full">
+          <strong className="mb-0">* Web NO Oficial</strong>
+        </aside>
       </main>
-      <aside className="py-2 w-full">
-        <strong className="mb-0 ml-3">* Web NO Oficial</strong>
-      </aside>
       <footer className="w-full bg-orange-200 border-t-2 border-orange-500 text-center py-3 text-xl">
         <h3 className="mb-0">
           by <strong>Manuel Prieto de Antón &copy; 2025</strong>
