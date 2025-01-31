@@ -42,7 +42,7 @@ const App = () => {
         <h1 className="text-6xl">Calculadora de Salario Adecco*</h1>
         <h3 className="text-2xl">
           Moz@ de descarga | Manipulación y clasificado textil | Reposición en
-          tienda |
+          tienda
         </h3>
         <h4 className="text-xl">Lefties & C.C. Islazul</h4>
       </header>

@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import mkcert from 'vite-plugin-mkcert';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), mkcert()],
+  base: '/salario-adecco',
   server: {
-    open: true, // Abre el navegador automáticamente al iniciar el servidor
+    open: true,
+    host: true,
+    https: true,
   },
 });
