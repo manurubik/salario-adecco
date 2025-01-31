@@ -2,10 +2,10 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('salario-adecco-v0').then((cache) => {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/manifest.json',
-        '/adecco.png',
+        '/salario-adecco',
+        '/salario-adecco/index.html',
+        '/salario-adecco/manifest.json',
+        '/salario-adecco/adecco.png',
       ]);
     })
   );
