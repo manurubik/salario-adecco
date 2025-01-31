@@ -2,7 +2,7 @@
   "short_name": "Salario Adecco",
   "name": "Calculadora de Salario Adecco",
   "description": "Calculadora para estimar el salario de los trabajadores de Adecco.",
-  "start_url": "/",
+  "start_url": "/salario-adecco",
   "display": "standalone",
   "background_color": "#d1d5db",
   "theme_color": "#1f2937",
