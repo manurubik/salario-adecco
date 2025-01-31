@@ -18,6 +18,12 @@ Diseñada específicamente para trabajadores del Lefties en C.C. Islazul.
 - **Interfaz intuitiva**: Una experiencia de usuario amigable y accesible, optimizada para dispositivos de cualquier tamaño.
 - **Avisos y notificaciones** para guiar al usuario en el uso correcto de la herramienta.
 
+## 📱 Aplicación Web Progresiva (PWA)
+
+- **PWA (Progressive Web App)**: La aplicación ahora se puede agregar a la pantalla de inicio de tu dispositivo móvil o de escritorio y usarse como una app nativa, incluso sin conexión a internet.
+- **Instalación**: Si accedes a la aplicación desde un dispositivo móvil o escritorio con soporte para PWA, simplemente selecciona la opción "Agregar a pantalla de inicio" para instalarla y usarla sin conexión.
+- **Beneficios**: Disfruta de una experiencia similar a una aplicación nativa con la ventaja de poder usarla sin necesidad de estar conectado a internet una vez que esté instalada.
+
 ## 🛠️ Tecnologías utilizadas
 
 - **React**: Para el desarrollo de la interfaz de usuario.
