@@ -1,22 +1,24 @@
-export const baseSalary = 545.73; // Salario base fijo
-export const irpf = 2; // IRPF fijo (%)
-export const ss = 6.52; // Seguridad Social fija (%)
-export const extraHourRate = 9.1; // Pago fijo por hora extra (€)
-export const absenceRate = 27.28; // Pago por ausencia (€)
+export const salary = {
+  baseSalary: 569.79, // Salario base fijo
+  irpf: 0, // IRPF fijo (%)
+  ss: 6.48, // Seguridad Social fija (%)
+  extraHourRate: 9.99, // Pago fijo por hora extra (€)
+  absenceRate: 28.48, // Pago por ausencia (€)
+};
 
 export const calculateGrossSalary = (
   lastMonthHours: number,
   currentMonthHours: number
 ) => {
   const totalExtraHours = lastMonthHours + currentMonthHours;
-  return baseSalary + totalExtraHours * extraHourRate;
+  return salary.baseSalary + totalExtraHours * salary.extraHourRate;
 };
 
 export const calculateDeductions = (grossSalary: number, absences: number) => {
-  const absenceDeduction = absences * absenceRate;
+  const absenceDeduction = absences * salary.absenceRate;
   const baseForDeductions = grossSalary - absenceDeduction;
-  const irpfDeduction = (irpf / 100) * baseForDeductions;
-  const ssDeduction = (ss / 100) * baseForDeductions;
+  const irpfDeduction = (salary.irpf / 100) * baseForDeductions;
+  const ssDeduction = (salary.ss / 100) * baseForDeductions;
   return { irpfDeduction, ssDeduction, absenceDeduction, baseForDeductions };
 };
 

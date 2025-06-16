@@ -72,6 +72,7 @@ const App = () => {
               ssDeduction={ssDeduction}
               absenceDeduction={absenceDeduction}
               netSalary={finalSalary}
+              setFinalSalary={setFinalSalary}
             />
           )}
         </div>
@@ -87,9 +88,9 @@ const App = () => {
           <strong className="mb-0">* Web NO Oficial</strong>
         </aside>
       </main>
-      <footer className="w-full bg-orange-200 border-t-2 border-orange-500 text-center py-3 text-xl">
+      <footer className="w-full bg-orange-200 border-t-2 border-orange-500 text-center py-3">
         <h3 className="mb-0">
-          by <strong>Manuel Prieto de Antón &copy; 2025</strong>
+          por <strong>Manuel Prieto de Antón &copy; Junio 2025</strong>
         </h3>
       </footer>
     </div>

@@ -112,7 +112,7 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
         flush
       >
         <Accordion.Item eventKey="1">
-          <Accordion.Header className="bg-blue-500 text-white p-1 hover:bg-blue-600 transition">
+          <Accordion.Header className="bg-blue-500 p-1 hover:bg-blue-600 transition">
             Calcular tiempo de trabajo
           </Accordion.Header>
           <Accordion.Body className="flex flex-col bg-gray-100 space-y-2">
@@ -192,7 +192,7 @@ const AccordionCalcs = ({ activeKey, setActiveKey }: AccordionCalcsProps) => {
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey="0">
-          <Accordion.Header className="bg-blue-500 text-white p-1 hover:bg-blue-600 transition">
+          <Accordion.Header className="bg-blue-500 p-1 hover:bg-blue-600 transition">
             Convertir a horas
           </Accordion.Header>
           <Accordion.Body className="flex flex-col bg-gray-100 space-y-2">
